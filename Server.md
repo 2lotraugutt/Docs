@@ -21,7 +21,7 @@
 - `/etc/systemd/system/httpd.service`
 ```
 [Unit]
-After=network.taget
+After=network.target
 
 [Service]
 User=server
