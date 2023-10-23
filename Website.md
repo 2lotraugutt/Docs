@@ -9,6 +9,11 @@
   - [`calendar/getNumbers/` - zwraca wszystkie 'szcześliwe' numerki.](#calendargetnumbers---zwraca-wszystkie-szcześliwe-numerki)
   - [`calendar/getWeekNumbers/` - zwraca 'szcześliwe' numerki z bieżącego tygodnia](#calendargetweeknumbers---zwraca-szcześliwe-numerki-z-bieżącego-tygodnia)
 - [`notifications/` - zwraca wybraną liczbe informacji](#notifications---zwraca-wybraną-liczbe-informacji)
+- [`posts/` - zwraca wybraną ilość postów stworzonych przez wybraną osobę](#posts---zwraca-wybraną-ilość-postów-stworzonych-przez-wybraną-osobę)
+  - [`posts/post/`](#postspost)
+  - [`posts/post/[id]`](#postspostid)
+  - [`posts/post/views/[id]`](#postspostviewsid)
+  - [`posts/topPosts/`](#poststopposts)
 
 
 # Ścieżki:
@@ -23,7 +28,7 @@
 ### `calendar/days/` - zwraca wybrane obiekty dnia wraz z wydarzeniami oraz tagami
 > Możliwe zapytania - GET
 
- Argumenty:
+Argumenty:
 | Argument        | Wartości           | 
 | ------------- |:-------------:| 
 | year      |ROK | 
@@ -35,7 +40,7 @@ api/calendar/days?year=2023&month=9
 ```
 
 Przykładowy Dane:
- ```JSON
+```JSON
 [{
     "date": "20-10-2023",
     "number": 30,
@@ -64,7 +69,7 @@ Przykładowy Dane:
         }
     ]
 }]
- ```
+```
 
 
 ### `calendar/events/` - zwraca wybrane obiekty wydarzeń wraz z tagami
@@ -89,7 +94,7 @@ Przykładowy request:
 ```
 
 Przykładowy Dane:
- ```JSON
+```JSON
 [{
     "id": "ee3357c0-bf3f-411e-920d-7d000cf991c3",
     "createdAt": "2023-09-30T00:20:26.938Z",
@@ -107,12 +112,12 @@ Przykładowy Dane:
         }
     ]
 }]
- ```
+```
 
 ### `calendar/getNumbers/` - zwraca wszystkie 'szcześliwe' numerki.
 > Możliwe zapytania - GET
 
- Argumenty:
+Argumenty:
 | Argument        | Wartości           | 
 | ------------- |:-------------:| 
 | year      |ROK | 
@@ -126,12 +131,12 @@ api/calendar/getNumbers?year=2023&month=9&day=20
 
 
 Przykładowy Dane:
- ```JSON
+```JSON
 [{
     "number": 24,
     "date": "20-10-2023"
 }]
- ```
+```
 
 ### `calendar/getWeekNumbers/` - zwraca 'szcześliwe' numerki z bieżącego tygodnia
 > Możliwe zapytania - GET
@@ -143,7 +148,7 @@ api/calendar/getWeekNumbers
 ```
 
 Przykładowy Dane:
- ```JSON
+```JSON
 [{
     "number": 18,
     "date": "23-10-2023"
@@ -180,7 +185,7 @@ Przykładowy request:
 
 
 Przykładowy Dane:
- ```JSON
+```JSON
 [{
     "id": "ff9af896-d336-46da-a0be-5771bc29197d",
     "createdAt": "2023-09-01T15:47:33.000Z",
@@ -195,4 +200,87 @@ Przykładowy Dane:
     "content": "Uroczyste rozpoczęcie roku szkolnego 2023/2024 odbędzie się 4 września 2023 w dużej sali gimnastycznej:\r\n\r\n- o godzinie 9.00- dla klas II , III , IV\r\n- o godzinie 11.00- dla klas I",
     "authorId": "82c50b88-97fb-46c3-8e85-222d83192b19"
 }]
- ```
+```
+
+
+ ## `posts/` - zwraca wybraną ilość postów stworzonych przez wybraną osobę
+ > Możliwe zapytania - GET
+
+Argumenty:
+| Argument        | Wartości           | 
+| ------------- |:-------------:| 
+| count      |CYFRA | 
+| author      |ID AUTORA | 
+
+Przykładowy request:
+```
+/api/posts?count=1&author=82c50b88-97fb-46c3-8e85-222d83192b19
+```
+
+Przykładowy Dane:
+```JSON
+[{
+    "id": "aa4746b4-4e3e-48aa-9674-91ec4377f7a1",
+    "createdAt": "2023-05-19T00:00:00.000Z",
+    "title": "Test kompetencji językowych",
+    "content": "# Oddział Międzynarodowy w II LO im. Romualda Traugutta w Częstochowie\r\nZakres materiału gramatycznego i leksykalnego z języka angielskiego obowiązujący na części pisemnej sprawdzianu kompetencji językowych\r\n### Materiał gramatyczny oraz leksykalny.",
+    "published": true,
+    "views": 3,
+    "titleImage": "/Archiwum.png",
+    "gallery": [],
+    "authorId": "82c50b88-97fb-46c3-8e85-222d83192b19",
+    "publishedById": "28105da3-ece4-43e3-90a8-ba7b1e52de82"
+}]
+```
+
+### `posts/post/`
+### `posts/post/[id]`
+### `posts/post/views/[id]`
+### `posts/topPosts/`
+> Możliwe zapytania - GET
+
+> Api zwraca najpopularniejsze posty sprzed 30 dni. 
+> Aby zapobiec sytuacji, w której fetch'ujemy więcej postów niż zostało opublikowane przez ostatnie 30 dni, funkcja zostałą podzielone na 2 części:
+>1. Fetch'uje najpopularniejsze posty (wyznaczoną ilość)
+>2. Jeżeli takich postów jest za mało, druga część funkcji, zwraca ostatnio opublikowane posty (tyle ile brakuje i takie, które nie zostały zwrócone w punkcie 1.)
+>
+>(Funckja defaulowo zwraca jeden, najpopularniejszy post.)
+
+Argumenty:
+| Argument        | Wartości   |        
+| ------------- |:-------------:| 
+| count      |CYFRA | 
+
+
+Przykładowy request:
+```
+api/posts/topPosts?count=2
+```
+
+Przykładowy Dane:
+```JSON
+[{
+    "id": "21228c32-f966-480f-9c1c-af3faf4aaf83",
+    "createdAt": "2023-06-06T00:00:00.000Z",
+    "title": "Konsultacje z rodzicami:",
+    "content": "06.06.2023r (wtorek) w godz. 18.00-19.00 odbędą się konsultacje dla rodziców. Dyrekcja szkoły",
+    "published": true,
+    "views": 26,
+    "titleImage": "/Archiwum.png",
+    "gallery": [],
+    "authorId": "28105da3-ece4-43e3-90a8-ba7b1e52de82",
+    "publishedById": "82c50b88-97fb-46c3-8e85-222d83192b19"
+},
+{
+    "id": "c7193fec-4a52-48bc-bfce-3144ab28f784",
+    "createdAt": "2023-05-24T00:00:00.000Z",
+    "title": "Systematycznie aktualizowane statystyki rekrutacji",
+    "content": " \nRekrutacja 2023 na Tik Toku\n",
+    "published": true,
+    "views": 8,
+    "titleImage": "/Archiwum.png",
+    "gallery": [],
+    "authorId": "28105da3-ece4-43e3-90a8-ba7b1e52de82",
+    "publishedById": "28105da3-ece4-43e3-90a8-ba7b1e52de82"
+}]
+```
