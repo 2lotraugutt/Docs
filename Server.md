@@ -30,5 +30,5 @@ User=server
 ExecStart=/home/server/Traugut.net/node_modules/.bin/next start -p 8888
 ```
 
-# 
+#  
 
