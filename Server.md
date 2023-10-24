@@ -1,10 +1,12 @@
 # Grupy
 
-- sysadmin - Upoważnia do pełnej administracji systemem
+## sysadmin 
+Upoważnia do pełnej administracji systemem
 ```
 %sysadmin    ALL:(ALL:ALL)ALL
 ```
-- webadmin - Upoważnia do wszystkich komend jako urzytkownik "server" oraz do zrestartowania httpd (`sudo systemctl restart httpd.servece`)
+## webadmin 
+Upoważnia do wszystkich komend jako urzytkownik "server" oraz do zrestartowania httpd (`sudo systemctl restart httpd.servece`)
 ```
 %webadmin    ALL=NOEXEC: /user/bin/systemctl restart httpd.service
 %webadmin    ALL=(server) ALL
@@ -27,4 +29,6 @@ After=network.target
 User=server
 ExecStart=/home/server/Traugut.net/node_modules/.bin/next start -p 8888
 ```
+
+#  
 
