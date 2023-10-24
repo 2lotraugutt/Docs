@@ -1,16 +1,16 @@
-# Zarządzanie urzytkownikami
-## Dodawanie Urzytkownika 
+# Zarządzanie użytkownikami
+## Dodawanie użytkownika 
+```sh
+sudo adduser {nazwa użytkownika}
+sudo adduser {nazwa użytkownika} {webadmin, sysadmin}
 ```
-sudo adduser {nazwa urzytkownika}
-sudo adduser {nazwa urzytkownika} {webadmin, sysadmin}
+**WAŻNE**: Ustawić date wygaśnięcia użytkownika!
+## Usuwanie użytkownika
+```sh
+sudo deluser {nazwa użytkownika}
 ```
-WAŻNE: Ustawić date wygaśńięcia urzytkownika
-## Usuwanie Urzytkownika
-```
-sudo deluser {nazwa urzytkownika}
-```
-## Ustawianie daty wygaśnięcia dla urzytkownika
-```
-sudo chage -E {data wygaśniecia} {nazwa urzytkownika}
+## Ustawianie daty wygaśnięcia dla użytkownika
+```sh
+sudo chage -E {data wygaśniecia} {nazwa użytkownika}
 ```
 ## 

@@ -1,5 +1,4 @@
-# Grupy
-
+# Grupy:
 ## sysadmin 
 Upoważnia do pełnej administracji systemem
 ```
@@ -13,11 +12,11 @@ Upoważnia do wszystkich komend jako urzytkownik "server" oraz do zrestartowania
 ```
 
 # Użytkownicy
-- franek - konto sysadmin dla Franciszka Skuta automatycznie deaktywowane 2026-06-30
-- bartek - konto webadmin dla Bartosza Wiaderka automatycznie deaktywowane 2026-06-30
-- konrad - konto sysadmin dla Konrada Woszczyka manualnie dezaktywowane
-- server - konto uruchamiające server nextjs przez `/etc/systemd/system/httpd.service`
-- postgres - konto służące do administracji bazą danych postgresql.
+- **franek** - konto sysadmin dla Franciszka Skuta, automatycznie deaktywowane `2026-06-30`
+- **bartek** - konto webadmin dla Bartosza Wiaderka, automatycznie deaktywowane `2026-06-30`
+- **konrad** - konto sysadmin dla Konrada Woszczyka, dezaktywowane manualnie
+- **server** - konto uruchamiające server nextjs przez `/etc/systemd/system/httpd.service`
+- **postgres** - konto służące do administracji bazą danych postgresql
 
 # Usługi
 - `/etc/systemd/system/httpd.service`
