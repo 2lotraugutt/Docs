@@ -23,7 +23,7 @@ Upoważnia do wszystkich komend jako urzytkownik "server" oraz do zrestartowania
 - `/etc/systemd/system/httpd.service`
 ```
 [Unit]
-After=network.taget
+After=network.target
 
 [Service]
 User=server
