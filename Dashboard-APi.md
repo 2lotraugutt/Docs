@@ -2,12 +2,15 @@
 > API serwera (wymagające weryfikacji) znajduje się w folderze: `/app/api/dashboard/`
 
 # Lista:
-- [`account/`](#account)
-- [`calednar/`](#calednar)
-- [`notifications/`](#notifications)
-- [`posts/`](#posts)
-- [`roles/`](#roles)
-- [`users/`](#users)
+- [Dashboard API](#dashboard-api)
+- [Lista:](#lista)
+- [Ścieżki:](#ścieżki)
+  - [`account/`](#account)
+  - [`calednar/`](#calednar)
+  - [`notifications/`](#notifications)
+  - [`posts/`](#posts)
+  - [`roles/`](#roles)
+  - [`users/`](#users)
 
 
 # Ścieżki:
@@ -145,4 +148,33 @@ Przykładowy request:
 ```
 ## `posts/`
 ## `roles/`
+> Możliwe zapytania - GET
+
+> Funkcja zwraca wszystkie typu użytkowników (`role`) znajdujące się w bazie danych
+> 
+> Wymagane persmisje: `manageRoles`
+
+Przykładowy request:
+```
+/api/dashboard/roles/
+```
+
+Przykładowy Dane:
+```JSON
+[{
+  "tag": "USER",
+  "name": "UÅ¼ytkownik",
+  "createPosts": false,
+  "publishPosts": false,
+  "managePosts": false,
+  "manageUsers": false,
+  "verifyUsers": false,
+  "manageEvents": false,
+  "manageCalendar": false,
+  "manageRoles": false,
+  "manageNotifications": false
+},
+...
+]
+```
 ## `users/`
