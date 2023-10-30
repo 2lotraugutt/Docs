@@ -13,4 +13,3 @@ sudo deluser {nazwa użytkownika}
 ```sh
 sudo chage -E {data wygaśniecia} {nazwa użytkownika}
 ```
-## 
